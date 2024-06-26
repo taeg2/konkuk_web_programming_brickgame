@@ -1,0 +1,575 @@
+@font-face {
+  src: url("neodgm.ttf");
+  font-family: "neodgm.ttf";
+}
+
+body {
+  background-color: #2f2f2f; /* 어두운 회백색 */
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "neodgm.ttf";
+  /* 글자 윤곽 */
+  text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+}
+
+#container {
+  position: relative;
+  width: 840px;
+  height: 600px;
+  margin: 50px auto;
+  /* border: 1px solid blueviolet; */
+  overflow: hidden;
+}
+
+.menu {
+  position: absolute;
+  /* background-image: url("img/bg/bg0.gif"); */
+  background-image: url("img/bg/difficultBg.jpg");
+  /* background-position: 0px -40px; */
+  width: 840px;
+  height: 600px;
+  z-index: 10;
+  overflow: hidden;
+  display: none;
+}
+#gameOver {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("img/bg/gameOver.jpg");
+  background-size: 840px 600px;
+}
+
+#earthClear {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("img/bg/stage1Clear.jpg");
+  background-size: 880px 880px;
+}
+#earthClear .stageClear {
+  font-size: 150px;
+  cursor: default;
+  text-shadow: -3px 0px green, 0px 3px green, 3px 0px green, 0px -3px green;
+}
+#moonClear {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("img/bg/stage2Clear.png");
+  background-size: 880px 880px;
+}
+#moonClear .stageClear {
+  font-size: 150px;
+  cursor: default;
+  text-shadow: -3px 0px green, 0px 3px green, 3px 0px green, 0px -3px green;
+}
+#sunClear {
+  /* 0524 수정:태양 클리어 화면 디자인 */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("img/bg/stage3Clear.png");
+  background-size: 880px 880px;
+}
+#sunClear .stageClear {
+  font-size: 150px;
+  cursor: default;
+  text-shadow: -3px 0px green, 0px 3px green, 3px 0px green, 0px -3px green;
+}
+
+#mainMenu {
+  display: block;
+}
+
+#logo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+}
+
+#mainimg {
+  position: absolute;
+  top: 70px;
+  width: 500px;
+  left: 50%;
+}
+
+#mainMenu h1 {
+  font-size: 40px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+#mainMenu div {
+  display: flex;
+  margin-top: 120px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: darkorange;
+  width: 100%;
+  height: 100%;
+}
+
+#coin {
+  top: 45%;
+  font-size: 30px;
+  position: absolute;
+  color: rgb(87, 197, 87);
+}
+
+#mainearth {
+  position: absolute;
+  top: 70%;
+  width: 700px;
+  right: 30%;
+  z-index: -1;
+}
+
+#mainmoon {
+  position: absolute;
+  top: 50%;
+  width: 400px;
+  left: 70%;
+}
+#UFO {
+  position: absolute;
+  z-index: -1;
+  right: 65%;
+  width: 400px;
+  top: 40%;
+  filter: brightness(70%);
+}
+#copyright {
+  z-index: 10;
+  margin: 20px;
+  color: white;
+  text-shadow: none;
+  font-size: 20px;
+}
+#KU {
+  color: red;
+  font-size: 30px;
+}
+.menu h2 {
+  display: block;
+  font-size: 3em;
+  color: white;
+  text-shadow: -2px 0px green, 0px 2px green, 2px 0px green, 0px -2px green;
+  text-align: center;
+  margin-top: 50px;
+  cursor: default;
+}
+
+.menu h1 {
+  display: block;
+  width: 170px;
+  font-size: 2em;
+  cursor: pointer;
+  color: darkorange;
+  text-align: center;
+}
+
+.menu div h1:nth-child(1) {
+  top: 0px;
+  font-size: 3em;
+}
+
+.explain {
+  position: absolute;
+  top: 78%;
+  font-size: 30px;
+  color: rgb(87, 197, 87);
+  width: 840px;
+  text-align: center;
+}
+
+.chooseDiv {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chooseDiv h1 {
+  width: min-content;
+  margin-bottom: 7px;
+}
+
+.chooseDiv:nth-of-type(1) {
+  top: 130px;
+}
+
+.chooseDiv:nth-of-type(2) {
+  top: 280px;
+}
+
+.choose {
+  width: 100px;
+  height: 60px;
+  background-color: gray;
+  text-align: center;
+  line-height: 90px;
+  border: 3px solid rgb(87, 197, 87);
+  cursor: pointer;
+  margin: 0 10px;
+}
+.choose:nth-child(3) {
+  background-color: white;
+}
+.chooseDiv > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.choose p {
+  width: 100px;
+  line-height: 60px;
+  font-size: 40px;
+}
+
+.choose img {
+  margin-top: 5px;
+  width: 45px;
+}
+
+#difficulty {
+  background-image: url("img/bg/difficultBg.jpg");
+  background-color: black;
+}
+
+.dif {
+  height: 200px;
+  width: 200px;
+  padding: 35px;
+  display: inline-block;
+}
+.dif h1 {
+  width: 200px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.dif img {
+  width: 180px;
+  filter: drop-shadow(0 0 3px #ffffff);
+  filter: drop-shadow(0 0 3px #ffffff);
+  filter: drop-shadow(0 0 10px #ffffff);
+  filter: drop-shadow(0 0 15px #ffffff);
+  cursor: pointer;
+}
+
+#backButton {
+  position: absolute;
+  display: none;
+  z-index: 20;
+  cursor: pointer;
+  color: white;
+  bottom: 20px;
+  right: 40px;
+}
+#backButton h1 {
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+
+#stopButton {
+  position: absolute;
+  display: none;
+  z-index: 20;
+  cursor: pointer;
+  color: white;
+  bottom: 20px;
+  right: 40px;
+}
+#stopButton h1 {
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+
+canvas {
+  background: #eee;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black; /* 캔버스 경계 표시 */
+}
+
+#mainMenu h1:hover {
+  transform: scale(1.2);
+  color: white;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+.clearButton h1:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+.overButton h1:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+#backButton h1:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen,
+    0px -1px darkgreen;
+}
+#backButton h1:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen,
+    0px -1px darkgreen;
+}
+#stopButton h1:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen,
+    0px -1px darkgreen;
+}
+.dif:hover h1 {
+  transform: scale(1.2);
+  color: red;
+}
+.choose.choose:click {
+  cursor: default;
+}
+
+#lives {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 20;
+}
+
+.life {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+#help {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  /* padding-top: 50px; */
+}
+
+#help .help-content {
+  margin-top: 20px;
+  font-size: 20px;
+  color: rgb(87, 197, 87);
+}
+
+#help .special-blocks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#help .special-blocks .block {
+  text-align: center;
+  color: rgb(87, 197, 87);
+}
+
+#help .special-blocks .block img {
+  width: 120px;
+  height: 50px;
+  display: block;
+  margin: 0 auto 10px;
+  filter: drop-shadow(0 0 3px #ffffff);
+  filter: drop-shadow(0 0 3px #ffffff);
+  filter: drop-shadow(0 0 10px #ffffff);
+  filter: drop-shadow(0 0 15px #ffffff);
+}
+
+#help .special-blocks .block p {
+  font-size: 16px;
+  margin-top: 10px;
+  color: white;
+  text-shadow: none; /* 텍스트 윤곽 없애기 */
+}
+
+/* 0523 내가 구현하고 있는 스토리 라인 부분 */
+#storyText {
+  margin: 150px 125px;
+  font-size: 1.5em;
+}
+
+#startButton {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  background-color: darkorange;
+  color: white;
+  text-shadow: -1px 0px brown, 0px 1px brown, 1px 0px brown, 0px -1px brown; /* 0524 수정: 글자 테두리 색 변경*/
+  font-size: 24px;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+#startButton:hover {
+  background-color: orangered;
+  /* 0524 수정: 글자 색 테두리 색 추가*/
+  color: lightgray;
+  text-shadow: -1px 0px darkred, 0px 1px darkred, 1px 0px darkred,
+    0px -1px darkred;
+}
+#skipButton {
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+  color: white;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+  font-size: 40px;
+  cursor: pointer;
+}
+#skipButton:hover {
+  color: lightgray;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen,
+    0px -1px darkgreen;
+}
+#countdown {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+/* 0525 추가된 부분 */
+#gameAllClearText {
+  margin: 150px 125px;
+  font-size: 1.5em;
+}
+
+
+/* 스코어보드 스타일 */
+#scoreboard {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: lighter; /* 글씨를 얇게 */
+}
+
+#scoreboard h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+
+#scoreList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#scoreList li {
+  margin-bottom: 5px;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+
+/* 이름 입력 화면 스타일 */
+#nameInputScreen {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive; /* 고전 게임 느낌의 글꼴 사용 */
+}
+
+#nameInputScreen h2 {
+  margin-bottom: 10px;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+
+#nameInputScreen input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#nameInputScreen button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: darkorange;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#nameInputScreen button:hover {
+  background-color: orangered;
+  color: lightgray;
+  text-shadow: -1px 0px darkred, 0px 1px darkred, 1px 0px darkred
+}
+
+#submitFinalScore {
+  cursor: pointer;
+  color: white;
+  text-shadow: -1px 0px green, 0px 1px green, 1px 0px green, 0px -1px green;
+}
+
+#submitFinalScore:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen, 0px -1px darkgreen;
+}
+#allClearMenu {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);  
+  /* padding: 10px; 0526*/
+  border-radius: 5px;
+  color: white;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen, 0px -1px darkgreen;
+  z-index: 1000; 
+  left: 335px;
+}
+.backToMain {
+  cursor: pointer;
+  color: white;
+}
+.backToMain:hover {
+  transform: scale(1.2);
+  color: lightgray;
+  text-shadow: -1px 0px darkgreen, 0px 1px darkgreen, 1px 0px darkgreen, 0px -1px darkgreen;
+}
+

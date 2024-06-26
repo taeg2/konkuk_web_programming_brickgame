@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>brickgame</title>
+
+    <!-- setUp 들어갔을 때 이거 안 넣으면 오류나는데 이유를 모르겠음 -->
+    <link rel="shortcut icon" href="#" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="menu.js"></script>
+    <script type="text/javascript" src="brickgame.js"></script>
+    <link rel="stylesheet" type="text/css" href="brickgame.css" />
+  </head>
+  <body>
+    <div id="container">
+      <!-- 뒤로가기 버튼 -->
+      <div class="backToMain" id="backButton">
+        <h1>BACK</h1>
+      </div>
+
+      <!-- 메인 화면 -->
+      <div class="menu" id="mainMenu">
+        <img id="logo" src="img/logo/logo0.png" />
+        <img id="UFO" src="img/UFO.png" />
+        <img id="mainearth" src="img/btn/earth.png" />
+        <img id="mainmoon" src="img/btn/moon.png" />
+        <div>
+          <p id="coin">INSERT COIN</p>
+          <h1>START</h1>
+          <h1>SETUP</h1>
+          <h1>HOW</h1>
+          <p id="copyright">ⓒ 2024 05 28, WEB PROGRAMMING</p>
+          <p id="KU">KONKUK</p>
+        </div>
+
+        <!-- <img id="volume" src=""> -->
+      </div>
+
+      <!-- 스토리 라인 부분 -->
+      <div class="menu" id="storyLine">
+        <div id="storyText"></div>
+        <button id="startButton">GAME START</button>
+        <!-- 0524 수정:스킵 추가 -->
+        <p id="skipButton">SKIP</p>
+      </div>
+
+      <!-- 행성(난이도) 선택 -->
+      <div class="menu" id="difficulty">
+        <h2>Difficulty</h2>
+        <div>
+          <div class="dif">
+            <h1>EARTH</h1>
+            <img id="easy" src="img/btn/earth.png" />
+          </div>
+
+          <div class="dif">
+            <h1>MOON</h1>
+            <img id="normal" src="img/btn/moon.png" />
+          </div>
+
+          <div class="dif">
+            <h1>SUN</h1>
+            <img id="hard" src="img/btn/sun.png" />
+          </div>
+          <div class="explain">
+            <p>PLEASE SELECT DIFFICULTY</p>
+            <p>YOU WANT</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 환경 설정 화면 -->
+      <div class="menu" id="setUp">
+        <img id="mainearth" src="img/btn/earth.png" />
+        <img id="UFO" src="img/UFO.png" />
+        <img id="mainmoon" src="img/btn/moon.png" />
+        <h2>SETUP</h2>
+        <!-- 음악 선택 -->
+        <div class="chooseDiv">
+          <h1 style="cursor: default">MUSIC</h1>
+          <div>
+            <div class="choose"><p>1</p></div>
+            <div class="choose"><p>2</p></div>
+            <div class="choose"><img id="volume" src="img/btn/mute.png" /></div>
+          </div>
+        </div>
+
+        <!-- 캐릭터 선택 -->
+        <div class="chooseDiv">
+          <h1 style="cursor: default">COLOR</h1>
+          <div>
+            <div class="choose"><img src="img/user/green.png" /></div>
+            <div class="choose"><img src="img/user/blue.png" /></div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <p>PLEASE SELECT YOUR BGM</p>
+          <p>AND YOUR COLOR</p>
+        </div>
+      </div>
+
+      <!-- 도움말 -->
+      <div class="menu" id="help">
+        <img id="mainearth" src="img/btn/earth.png" />
+        <img id="UFO" src="img/UFO.png" />
+
+        <h2>HOW TO PLAY</h2>
+        <div class="help-content">
+          <p>태양 에너지를 훔치러 온 외계인들을 막아야합니다!</p>
+          <p>마우스를 움직여 공격하고</p>
+          <p>다양한 능력을 얻어 맞서 싸우세요!</p>
+          <p>보스를 공격하면 클리어입니다</p>
+          <p>점점 다가오는 외계인들을 조심하세요!</p>
+        </div>
+        <h2>SPECIAL BLOCKS</h2>
+        <div class="special-blocks">
+          <div class="block">
+            <img src="img/brick/red.png" alt="Power Up Block" />
+            <p>파워업: 공이 분열합니다</p>
+          </div>
+          <div class="block">
+            <img src="img/brick/blue.png" alt="Enlarge Block" />
+            <p>사이즈업: 공이 더 커집니다</p>
+          </div>
+          <div class="block">
+            <img src="img/brick/green.png" alt="Extend Paddle Block" />
+            <p>사이즈업: 패들이 더 커집니다</p>
+          </div>
+          <div class="block">
+            <img src="img/brick/yellow.png" alt="Freeze Block" />
+            <p>시간정지: 3초간 시간이 멈춥니다</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 25 gameAllClear 추가된 부분 모든 stage clear시 실행 -->
+      <div class="menu" id="gameAllClear">
+        <div id="gameAllClearText"></div>
+        <h1 class="backToMain" id="allClearMenu" style="font-size: 4em; cursor: pointer;">MENU</h1>
+      </div>
+      <!-- 여기까지 -->
+
+      <!-- 각 스테이지 클리어 화면 -->
+      <div class="menu" id="earthClear">
+        <h2 class="stageClear">Stage Clear!</h2>
+        <div class="clearButton">
+          <h1 class="score"></h1>
+          <h1 class="replay" style="font-size: 4em">REPLAY</h1>
+          <h1 class="nextStage" style="font-size: 4em">NEXT</h1>
+          <h1 class="backToMain" style="font-size: 4em">MENU</h1>
+        </div>
+      </div>
+
+      <div class="menu" id="moonClear">
+        <h2 class="stageClear">Stage Clear!</h2>
+        <div class="clearButton">
+          <h1 class="score"></h1>
+          <h1 class="replay" style="font-size: 4em">REPLAY</h1>
+          <h1 class="nextStage" style="font-size: 4em">NEXT</h1>
+          <h1 class="backToMain" style="font-size: 4em">MENU</h1>
+        </div>
+      </div>
+
+      <div class="menu" id="sunClear">
+        <h2 class="stageClear">Game Clear!</h2>
+        <div class="clearButton">
+            <h1 class="score"></h1>
+            <h1 class="replay" style="font-size: 4em">REPLAY</h1>
+            <h1 class="backToMain" style="font-size: 4em">MENU</h1>
+            <!-- 이름 입력 후 메뉴로 돌아가는 버튼 추가 -->
+            <h1 id="submitFinalScore" style="font-size: 4em">SUBMIT SCORE</h1>
+        </div>
+    </div>
+      <!-- 게임 오버 -->
+      <div class="menu" id="gameOver">
+        <h2 style="font-size: 150px; cursor: default">Game Over</h2>
+        <div class="overButton">
+          <h1 class="replay" style="font-size: 4em">REPLAY</h1>
+          <h1 class="backToMain" style="font-size: 4em">MENU</h1>
+        </div>
+      </div>
+
+      <!-- 게임 화면 -->
+      <canvas id="myCanvas" width="840" height="600"></canvas>
+      <!-- 목숨 표시 -->
+      <div id="lives">
+        <img src="img/life.png" class="life" alt="Life" />
+        <img src="img/life.png" class="life" alt="Life" />
+        <img src="img/life.png" class="life" alt="Life" />
+      </div>
+      <!-- <div id="countdown">3</div>0526 -->
+      <div id="countdown"></div>
+      <div class="backToMain" id="stopButton">
+        <h1>HOME</h1>
+      </div>
+    </div>
+    <div id="scoreboard">
+      <h2>Scoreboard</h2>
+        <ul id="scoreList"></ul>
+    </div>
+    <!-- 이름 입력 화면 추가 -->
+    <div id="nameInputScreen" style="display: none;">
+      <h2>이름을 입력하세요:</h2>
+      <input type="text" id="playerName" />
+      <button onclick="submitScore()" style="text-shadow: -1px 0px brown, 0px 1px brown, 1px 0px brown, 0px -1px brown;">Submit</button>
+  </div>
+  </body>
+</html>
